@@ -17,7 +17,7 @@ import utilities.PasswordService;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet(description = "Controller that will handle the login  authenticate and pass on to browse", urlPatterns = { "/LoginServlet" })
+@WebServlet(description = "Controller that will handle the login  authenticate and pass on to browse", urlPatterns = {"/Login"})
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -72,11 +72,13 @@ public class LoginServlet extends HttpServlet {
 				
 				//exceeded logins
 				if(loginattempts > 2){
-					String errorMessage = "Error: Number of Login Attempts Exceeded";
-					request.setAttribute("errorMessage", errorMessage);
+					String Message = "Error: Number of Login Attempts Exceeded";
+					request.setAttribute("Message", Message);
 					url = "index.jsp";
 				}else
-					{	//proceed pull the fields from the form
+					{	
+					//proceed pull the fields from the form
+					
 					String username = request.getParameter("username");
 					String password = request.getParameter("password");
 
@@ -86,7 +88,7 @@ public class LoginServlet extends HttpServlet {
 					
 					//create a user helper class to make database calls, and call authenticate user method
 					UserQuery uq = new UserQuery();
-					User user = uq.authenticateUser( loginattempts, loginattempts, username, encryptedPass, encryptedPass);
+					User user = uq.authenticateUser( username, encryptedPass);
 
 					//we've found a user that matches the credentials
 					if(user != null){
@@ -98,8 +100,8 @@ public class LoginServlet extends HttpServlet {
 					}
 					// user doesn't exist, redirect to previous page and show error
 					else{
-						String errorMessage = "Error: Unrecognized Username or Password<br>Login attempts remaining: "+(3-(loginattempts));
-						request.setAttribute("errorMessage", errorMessage);
+						String Message = "Error: Unrecognized Username or Password<br>Login attempts remaining: "+(3-(loginattempts));
+						request.setAttribute("Message", Message);
 
 						//track login attempts (combats: brute force attacks)
 						session.setAttribute("loginAttempts", loginattempts++);

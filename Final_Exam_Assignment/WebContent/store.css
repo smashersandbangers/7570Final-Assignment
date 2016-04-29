@@ -1,21 +1,19 @@
 @CHARSET "UTF-8";
 
-.center-image{
- width: 85%;
- height: auto:	
-	
+.center-image {
+	width: 85%;
+	height: auto:
 }
 
-
 a:link {
-    background-color:#cccccc;;
-    color: white;
-    padding: 14px 20px;
-    text-align: center; 
-    text-decoration: none;
-    display: inline-block;
+	background-color: #cccccc;;
+	color: white;
+	padding: 14px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
 }
 
 a:active {
-    color: yellow;
+	color: yellow;
 }

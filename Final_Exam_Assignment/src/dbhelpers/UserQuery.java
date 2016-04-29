@@ -40,22 +40,25 @@ public class UserQuery {
 	 * @param password  The password for the user.
 	 * @return A user object if successful, null if unsuccessful.
 	 */
-	public User authenticateUser(int userid, int age, String name,String username, String password) {
+	public User authenticateUser(String username, String password) {
 		User user = null;
 		try {
 			//Add parameters to the ?'s in the preparedstatement and execute
-			authenticateUser.setString(1, username);
-			authenticateUser.setString(2, password);
+			authenticateUser.setString(1, "mathewz");
+			authenticateUser.setString(2, "12345");
 			ResultSet rs = authenticateUser.executeQuery();
+		
 			
 			//if we've returned a row, turn that row into a new user object
 			
 			
 			if (rs.next()) {
-				user = new User(rs.getInt(userid),rs.getString("name"),rs.getInt(age),rs.getString("username"), rs.getString("password"));
+				user = new User(rs.getInt("userid"),rs.getString("username"), rs.getString("password"), rs.getString("name"),rs.getInt("age"));
+				
 			}
+			
 		} catch (SQLException e) {
-			System.out.println(e.getClass().getName() + ": " + e.getMessage());
+			
 		}
 		return user;
 	}
