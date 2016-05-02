@@ -1,8 +1,21 @@
 @CHARSET "UTF-8";
 
+html{
+	background-color: steelblue;
+	
+	
+	
+	
+}
+
+h1{ 
+	text-align: center;
+	
+	
+}
 .center-image {
-	width: 85%;
-	height: auto:
+	width: 100%;
+	height: 50%:
 }
 
 a:link {
@@ -14,6 +27,47 @@ a:link {
 	display: inline-block;
 }
 
+
+table{
+	border:1px;
+	border-color:black;
+	border-style:solid;
+	background-color: #009999;
+	width:auto;
+	height:auto:
+}
+th{
+	border:1px;
+	border-color:black;
+	border-style:solid;
+	width:auto;
+	height:auto:
+}
+
+td{
+	border:1px;
+	border-color:black;
+	border-style:solid;
+	width:auto;
+	height:auto:
+}
+input[type=submit]{
+    background-color: #333333;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    cursor: pointer;
+   position: relative;
+}
+
+
+input[type=text]:focus {
+    background-color: lightblue;
+    border: 3px solid #555;
+}
+
+
 a:active {
-	color: yellow;
+    color: yellow;
 }

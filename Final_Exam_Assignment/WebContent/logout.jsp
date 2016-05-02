@@ -11,16 +11,9 @@
 <body>
 	<h1>Cricket Store Online</h1>
 
-	<p>Please enter your username and password to continue shopping</p>
+	<p>Thank you for shopping with us </p>
 
-	<form id="loginForm" action="Login" method="POST">
-
-		<input type="text" name="username" placeholder="Username" required>
-		<br> <input type="password" name="password"
-			placeholder="Password" required> <br> <input
-			type="submit" value="login"><br>
-
-		<p>Error:${message}</p>
+	<a href = "/login.jsp" > Login </a>
 	</form>
 </body>
 </html>

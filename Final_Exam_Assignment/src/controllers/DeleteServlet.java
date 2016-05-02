@@ -8,22 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import dbhelpers.BrowseQuery;
+import model.Cart;
 
 /**
- * Servlet implementation class BrowserServlet
+ * Servlet implementation class DeleteServlet
  */
-@WebServlet(description = "Controller to direct the user from the login and cart page", urlPatterns = { "/browse"
-
-})
-public class BrowserServlet extends HttpServlet {
+@WebServlet(description = "Servlet that controls the deletion of products", urlPatterns = { "/Delete" })
+public class DeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public BrowserServlet() {
+	public DeleteServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -44,20 +43,15 @@ public class BrowserServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		int productId = Integer.parseInt(request.getParameter("productId"));
 
-		// create a browse query helper object
-		BrowseQuery bq = new BrowseQuery("Cricket_Store_Database", "root", "password") {
-		};
+		HttpSession session = request.getSession();
 
-		// get html table from browse query object
+		Cart cart = new Cart((int) session.getAttribute("userId"));
+		cart.removeProduct(productId);
 
-		bq.doBrowse();
-		String table = bq.getHTMLTable();
-
-		// pass execution to browser.jsp
-		request.setAttribute("table", table);
-		String url = "/browse.jsp";
+		// pass execution o to read servlet
+		String url = "/ViewCart";
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

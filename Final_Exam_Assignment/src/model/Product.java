@@ -1,13 +1,19 @@
 package model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import dbhelpers.ProductHelper;
+
 public class Product {
 
 	private int id;
-	private String name; 
+	private String name;
 	private String img;
 	private double price;
 	private int quantity;
 	private String desc;
+
 	/**
 	 * @param id
 	 * @param name
@@ -21,84 +27,108 @@ public class Product {
 		this.img = img;
 		this.price = price;
 		this.quantity = quantity;
-		this.desc=desc;
+		this.desc = desc;
 	}
-	
-	
-	
-	public Product (){
-		this.id = 1;
-		this.name = "name";
-		this.img = "img";
-		this.price = 0;
-		this.quantity = 0;
-		this.desc="desc";
+
+	public Product(int id) {
+		this.id = id;
+		ProductHelper productHelper = new ProductHelper();
+		ResultSet rs = productHelper.getProductInfo(id);
+		try {
+			if (rs.next()) {
+				this.name = rs.getString("Name");
+				this.img = rs.getString("Img");
+				this.price = rs.getInt("Price");
+				this.quantity = rs.getInt("Quantity");
+				this.desc = rs.getString("Desc");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
-	
+
+	public Product() {
+
+	}
+
 	// Generating getters and setters
-	
+
 	/**
 	 * @return the id
 	 */
 	public int getId() {
 		return id;
 	}
+
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	/**
 	 * @return the name
 	 */
 	public String getName() {
 		return name;
 	}
+
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	/**
 	 * @return the img
 	 */
 	public String getImg() {
 		return img;
 	}
+
 	/**
-	 * @param img the img to set
+	 * @param img
+	 *            the img to set
 	 */
 	public void setImg(String img) {
 		this.img = img;
 	}
+
 	/**
 	 * @return the price
 	 */
 	public double getPrice() {
 		return price;
 	}
+
 	/**
-	 * @param price the price to set
+	 * @param price
+	 *            the price to set
 	 */
 	public void setPrice(double price) {
 		this.price = price;
 	}
+
 	/**
 	 * @return the quantity
 	 */
 	public int getQuantity() {
 		return quantity;
 	}
+
 	/**
-	 * @param quantity the quantity to set
+	 * @param quantity
+	 *            the quantity to set
 	 */
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	
-	
 
 	/**
 	 * @return the desc
@@ -107,19 +137,17 @@ public class Product {
 		return desc;
 	}
 
-
-
 	/**
-	 * @param desc the desc to set
+	 * @param desc
+	 *            the desc to set
 	 */
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
-	
-	
-	
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -128,10 +156,4 @@ public class Product {
 				+ ", desc=" + desc + "]";
 	}
 
-
-
-	
-	
-	
-	
 }

@@ -1,114 +1,135 @@
 package model;
 
+import dbhelpers.UserHelper;
+
 public class User {
-	
-public int userid;
-private String username;
-private String password;
-private String name;
-private int age;
-/**
- * @param userid
- * @param name
- * @param age
- * @param username
- * @param password
- */
 
+	public int id;
+	private String username;
+	private String password;
+	private String name;
 
-public User(int userid, String username, String password, String name, int age) {
-	this.userid = 0;
-	this.username = username;
-	this.password = password;
-	this.name=name;
-	this.age = age;
-}
+	/**
+	 * @param userid
+	 * @param name
+	 * @param age
+	 * @param username
+	 * @param password
+	 */
 
+	// empty constructor
+	public User() {
+	}
 
+	public User(int id, String username, String password) {
+		this.id = id;
+		this.username = username;
+		this.password = password;
 
+	}
 
+	/**
+	 * @return the userid
+	 */
+	public int getUserid() {
+		return id;
+	}
 
-/**
- * @return the userid
- */
-public int getUserid() {
-	return userid;
-}
+	/**
+	 * @param userid
+	 *            the userid to set
+	 */
+	public void setUserid(int userid) {
+		this.id = userid;
+	}
 
-/**
- * @param userid the userid to set
- */
-public void setUserid(int userid) {
-	this.userid = userid;
-}
+	/**
+	 * @return the username
+	 */
+	public String getUsername() {
+		return username;
+	}
 
+	/**
+	 * @param username
+	 *            the username to set
+	 */
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
 
-/**
- * @return the username
- */
-public String getUsername() {
-	return username;
-}
+	/**
+	 * @param password
+	 *            the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-/**
- * @param username the username to set
- */
-public void setUsername(String username) {
-	this.username = username;
-}
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
 
-/**
- * @return the password
- */
-public String getPassword() {
-	return password;
-}
+	/**
+	 * @param name
+	 *            the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
 
-/**
- * @param password the password to set
- */
-public void setPassword(String password) {
-	this.password = password;
-}
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", name=" + name + "]";
+	}
 
-/**
- * @return the name
- */
-public String getName() {
-	return name;
-}
+	public boolean save() {
+		boolean success = false;
+		UserHelper userHelper = new UserHelper();
+		try {
+			System.out.println(this.getName());
+			System.out.println(this.getUsername());
+			System.out.println(this.getPassword());
+			success = userHelper.doAdd(this);
 
-/**
- * @param name the name to set
- */
-public void setName(String name) {
-	this.name = name;
-}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			userHelper.close();
+		}
+		return success;
+	}
 
-/**
- * @return the age
- */
-public int getAge() {
-	return age;
-}
+	public User authenticate() {
 
-/**
- * @param age the age to set
- */
-public void setAge(int age) {
-	this.age = age;
-}
+		UserHelper userHelper = new UserHelper();
+		try {
+			System.out.println(this.getName());
+			System.out.println(this.getUsername());
+			System.out.println(this.getPassword());
+			userHelper.doAuthenticate(this);
 
-/* (non-Javadoc)
- * @see java.lang.Object#toString()
- */
-@Override
-public String toString() {
-	return "User [userid=" + userid + ", username=" + username + ", password=" + password + ", name=" + name + ", age="
-			+ age + "]";
-}
-	
-	
-	
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			userHelper.close();
+		}
+		return this;
+	}
+
 }

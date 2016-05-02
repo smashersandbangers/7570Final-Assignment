@@ -1,19 +1,26 @@
 package dbhelpers;
 
+import static dbhelpers.Constants.dbName;
+import static dbhelpers.Constants.pwd;
+import static dbhelpers.Constants.uname;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpSession;
+
 import com.mysql.jdbc.Connection;
 
 import model.Product;
 
-public class BrowseQuery {
+public class ViewQuery {
+
 	private Connection connection;
 	private ResultSet results;
 
-	public BrowseQuery(String dbName, String uname, String pwd) {
+	public ViewQuery() {
 		String url = "jdbc:mysql://localhost:3306/" + dbName;
 
 		// set up driver
@@ -36,10 +43,13 @@ public class BrowseQuery {
 		}
 	}
 
-	public void doBrowse() {
-		String query = "select * from Product";
+	public void doView(HttpSession session) {
+		String query = "select * from Order where `userid`=?";
+
 		try {
+
 			PreparedStatement ps = this.connection.prepareStatement(query);
+			ps.setString(0, (String) session.getAttribute("userId"));
 			this.results = ps.executeQuery();
 
 		} catch (SQLException e) {
@@ -53,14 +63,8 @@ public class BrowseQuery {
 
 		try {
 			while (this.results.next()) {
-				Product product = new Product();
 
-				product.setName(this.results.getString("name"));
-				product.setDesc(this.results.getString("desc"));
-				product.setImg(this.results.getString("img"));
-				product.setPrice(this.results.getInt("price"));
-				product.setQuantity(this.results.getInt("quantity"));
-				product.setId(this.results.getInt("id"));
+				Product product = new Product(this.results.getInt("productid"));
 
 				table += "<tr>";
 				table += "<td>";
@@ -80,16 +84,6 @@ public class BrowseQuery {
 				table += product.getQuantity();
 				table += "</td>";
 
-				table += "<td>";
-				// table += "<form action=\"Add\" method=\"POST\"> <input
-				// type=\"text\" name=\"quantity\" required value=\"0\"> <input
-				// type=\"hidden\" name=\"productId\" value=\""
-				// + product.getId() + "\"> <input type=\"submit\"
-				// value=\"Add\">";
-				table += "<a href=Add?productId=" + product.getId() + ">Add To Cart</a> ";
-
-				table += "</td>";
-				table += "</tr>";
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

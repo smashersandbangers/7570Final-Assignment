@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>User Registration</title>
+<link rel="stylesheet" type="text/css" href="store.css">
 </head>
 <body>
 
@@ -14,16 +15,12 @@
 
 	<form id="RegistertationForm" action="Register" method="POST">
 
-		<input type="text" name="Name" placeholder="Name" value="" required><br>
-		<input type="text" name="Age" placeholder="age" value="" required><br>
-		<input type="text" name="username" placeholder="Username" value=""
-			required> <br> <input type="password" name="password"
-			placeholder="Password" value="" required> <br> <input
-			type="submit" name="Register" value="Register"><br>
+		<input type="text" name="name" placeholder="Name" value="${name}" required><br>
+		<input type="text" name="username" placeholder="Username" value="${username}" required> <br> 
+	<input type="password" name="password" placeholder="Password" value="" required> <br> 
+	<input type="submit" name="Register" value="Register"><br>
 
 	</form>
-
-
 
 
 	<% if(session.getAttribute("username")==null) {
