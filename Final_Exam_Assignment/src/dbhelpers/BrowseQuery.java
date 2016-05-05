@@ -68,12 +68,13 @@ public class BrowseQuery {
 				table += "</td>";
 				table += "<td><img src='";
 				table += product.getImg();
-				table += "' height='60' width='60'>";
+				table += "' height='100' width='100'>";
 				table += "</td>";
 				table += "<td>";
 				table += product.getDesc();
 				table += "</td>";
 				table += "<td>";
+				table += "$";
 				table += product.getPrice();
 				table += "</td>";
 				table += "<td>";

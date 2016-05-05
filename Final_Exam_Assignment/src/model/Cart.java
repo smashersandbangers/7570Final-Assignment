@@ -51,15 +51,17 @@ public class Cart {
 
 	public boolean addProducts(int productId, int quantity) {
 		boolean success = false;
+		Product product = new Product(productId);
 		Integer currentQuantity = productsInCart.get(productId);
-		if (currentQuantity == null)
-			this.productsInCart.put(productId, quantity);
-		else {
-			this.productsInCart.put(productId, currentQuantity + quantity);
-			Product product = new Product(productId);
-			// subtract quantity from product
-			// save
+
+		if (quantity < product.getQuantity()) {
+			if (currentQuantity == null)
+				this.productsInCart.put(productId, quantity);
+			else {
+				this.productsInCart.put(productId, currentQuantity + quantity);
+			}
 		}
+		// save
 		CartHelper cartHelper = new CartHelper();
 		cartHelper.saveCartChanges(this.userId, this.productsInCart);
 		return success;
@@ -71,8 +73,9 @@ public class Cart {
 		if (currentQuantity == null) {
 			return success;
 		} else {
-			this.productsInCart.remove(productId);
+			this.productsInCart.remove(productId, currentQuantity);
 		}
+
 		CartHelper cartHelper = new CartHelper();
 		cartHelper.saveCartChanges(this.userId, this.productsInCart);
 		return success;

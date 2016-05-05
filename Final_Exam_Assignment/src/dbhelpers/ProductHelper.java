@@ -50,6 +50,38 @@ public class ProductHelper {
 		return resultSet;
 	}
 
+	public ResultSet addProductInfo(int id, int quantity) {
+		ResultSet resultSet = null;
+		String query = "Update `Product` set `quantity` =? where `id`=?";
+		try {
+			PreparedStatement ps = this.connection.prepareStatement(query);
+			ps.setInt(1, id);
+			ps.setInt(2, quantity);
+			resultSet = ps.executeQuery();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return resultSet;
+	}
+
+	public ResultSet removeProductInfo(int id, int quantity) {
+		ResultSet resultSet = null;
+		String query = "Update  `Product` set `quantity`=? where `id`=?";
+		try {
+			PreparedStatement ps = this.connection.prepareStatement(query);
+			ps.setInt(1, id);
+			ps.setInt(2, quantity);
+			resultSet = ps.executeQuery();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return resultSet;
+	}
+
 	public void close() {
 		if (connection != null)
 			try {

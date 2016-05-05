@@ -40,12 +40,16 @@ public class AddtoCartQuery {
 	// Query to add products to the table
 
 	public void doAdd(Order order) {
-		String query = "INSERT INTO `Order` where productid=?";
+		String query = "INSERT INTO `Order` where `productid`=?";
+		String query2 = " UPDATE INTO  `Product` `quantity` =? where `productid`=?";
 
 		try {
 
 			PreparedStatement ps = this.connection.prepareStatement(query);
+			PreparedStatement ps2 = this.connection.prepareStatement(query2);
+
 			this.results = ps.executeQuery();
+			this.results = ps2.executeQuery();
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -68,7 +72,7 @@ public class AddtoCartQuery {
 				table += "</td>";
 				table += "<td><img src='";
 				table += product.getImg();
-				table += "' height='60' width='60'>";
+				table += "' height='70' width='70'>";
 				table += "</td>";
 				table += "<td>";
 				table += product.getDesc();

@@ -21,9 +21,10 @@ import utilities.PasswordService;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	HttpSession session;
-	String url = "";
-	int loginattempts;
+	private HttpSession session;
+	private String url = "";
+	private int loginattempts;
+	private String messsage = "";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -117,7 +118,8 @@ public class LoginServlet extends HttpServlet {
 
 				// track login attempts (combats: brute force attacks)
 				session.setAttribute("loginAttempts", loginattempts++);
-				url = "/index.jsp";
+				url = "/login.jsp";
+
 			}
 		}
 		// forward our request along

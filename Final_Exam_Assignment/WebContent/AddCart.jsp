@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+
+
 <%
     String table= (String)request.getAttribute("table");
     %>
@@ -24,6 +26,7 @@
 <th>Product Description</th>
 <th>Price</th>
 <th>Quantity</th>
+<th> Quanity Needed</th>
 </tr>
 </thead>
 	<tbody> <%= table%></tbody>
@@ -31,8 +34,9 @@
 
 </table>
 	
-	 <a href="Login?logout=true"> Log out</a></td> 
-
+	 <a href="Login?logout=true"> Log out</a>
+	 
+${message}
 
 	
 </body>

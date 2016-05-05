@@ -14,7 +14,15 @@
 		<h1>Welcome to the Cricket Store</h1>
 
 	</div>
+	
 
+	
+<div id="nav"> 
+                <ul>
+                    <li><a href="login.jsp"> Login </a></li>
+                    <li><a href="registration.jsp"> Register</a></li>
+                   </ul>
+                   </div>
 
 	<div id="center">
 
@@ -24,17 +32,10 @@
 
 	</div>
 
-	<p>To continue your cricketing journey please login or Register</p>
+	
 
 
 
-	<table>
-
-		<td><a href="login.jsp"> Login </a></td>
-
-		<td><a href="registration.jsp"> Register</a></td>
-
-	</table>
 
 </body>
 </html>

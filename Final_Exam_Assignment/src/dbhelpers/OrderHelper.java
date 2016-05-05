@@ -40,7 +40,7 @@ public class OrderHelper {
 		String query = "select * from Order where id=?";
 		try {
 			PreparedStatement ps = this.connection.prepareStatement(query);
-			ps.setInt(0, id);
+			ps.setInt(1, id);
 			resultSet = ps.executeQuery();
 
 		} catch (SQLException e) {

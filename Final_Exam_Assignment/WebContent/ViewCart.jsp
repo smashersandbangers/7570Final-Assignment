@@ -49,7 +49,7 @@
 	 </tr>
 </table>
 	
-	
+${message}
 	
 </body>
 </html>

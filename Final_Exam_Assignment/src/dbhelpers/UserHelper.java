@@ -19,7 +19,7 @@ public class UserHelper {
 	/**
 	 * Prepared SQL statement (combats: SQL Injections)
 	 */
-	private PreparedStatement authenticateUser;
+	private PreparedStatement authQuery;
 	private Connection connection;
 
 	/**

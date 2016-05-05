@@ -1,22 +1,48 @@
 @CHARSET "UTF-8";
 
 html{
-	background-color: steelblue;
-	
-	
-	
-	
+	background-color: beige;
+	font-color: white;
 }
 
 h1{ 
 	text-align: center;
 	
-	
 }
 .center-image {
-	width: 100%;
-	height: 50%:
+	width:100%;
+	height: 70%;
 }
+
+.login-image {
+	width:100%;
+	height: 350px;
+}
+
+
+#nav
+{
+z-index: auto;
+position: relative;
+	margin:40px;
+
+
+}
+#nav ul li 
+
+{display:inline;
+    text-decoration: none;    
+    padding: 10px;
+    align-content:flex-end;
+}
+#nav a hover:
+{
+    color:red;
+}
+
+
+
+
 
 a:link {
 	background-color: #cccccc;;
@@ -32,9 +58,8 @@ table{
 	border:1px;
 	border-color:black;
 	border-style:solid;
-	background-color: #009999;
 	width:auto;
-	height:auto:
+	height:100%:
 }
 th{
 	border:1px;
@@ -63,7 +88,7 @@ input[type=submit]{
 
 
 input[type=text]:focus {
-    background-color: lightblue;
+    background-color: #cccccc;
     border: 3px solid #555;
 }
 

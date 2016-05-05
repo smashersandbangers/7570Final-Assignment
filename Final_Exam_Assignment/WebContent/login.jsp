@@ -11,16 +11,34 @@
 <body>
 	<h1>Cricket Store Online</h1>
 
+<div id="nav"> 
+                <ul>
+                    <li><a href="login.jsp"> Login </a></li>
+                    <li><a href="registration.jsp"> Register</a></li>
+                   </ul>
+                   </div>
+
+
+
+	<div id="center">
+
+		<img class="login-image"
+			src="http://static.wixstatic.com/media/c32172_5aa2c4c9c6cf47ca00721b858a3ae8e9.jpg"
+			alt="Mainpic" />
+
+	</div>
+	
+
 	<p>Please enter your username and password to continue shopping</p>
 
 	<form id="loginForm" action="Login" method="POST">
 
 		<input type="text" name="username" placeholder="Username" required>
-		<br> <input type="password" name="password"
-			placeholder="Password" required> <br> <input
-			type="submit" value="login"><br>
-
-		<p>Error:${message}</p>
+		<br> <input type="password" name="password" placeholder="Password" required> <br> 
+		<input type="submit" value="login"><br>
+		
 	</form>
+	${message}
+	
 </body>
 </html>
