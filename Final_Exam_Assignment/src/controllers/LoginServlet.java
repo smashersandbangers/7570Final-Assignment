@@ -24,7 +24,7 @@ public class LoginServlet extends HttpServlet {
 	private HttpSession session;
 	private String url = "";
 	private int loginattempts;
-	private String messsage = "";
+	private String message = "";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -130,6 +130,14 @@ public class LoginServlet extends HttpServlet {
 	private void logout() {
 		session.invalidate();
 
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 }

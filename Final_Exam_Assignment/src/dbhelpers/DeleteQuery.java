@@ -32,7 +32,7 @@ public class DeleteQuery {
 	public void doDelete(String SKU) {
 		// String to hold query
 		String query = "delete from `Order` where productid = ?";
-
+		
 		// create a prepared Statement
 		try {
 			PreparedStatement ps = connection.prepareStatement(query);

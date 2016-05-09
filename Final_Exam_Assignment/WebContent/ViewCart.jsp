@@ -42,8 +42,7 @@
 	<tr>
 	<td>
 	 <a href="Login?logout=true"> Log out</a></td> 
-	 
-	  <td> <a href="Delete"> Delete</a></td>  
+	
 	  
 	 <td> <a href="browse"> Continue Shopping</a></td> 
 	 </tr>

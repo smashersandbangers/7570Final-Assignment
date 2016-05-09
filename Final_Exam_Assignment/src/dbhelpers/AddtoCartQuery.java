@@ -41,16 +41,20 @@ public class AddtoCartQuery {
 
 	public void doAdd(Order order) {
 		String query = "INSERT INTO `Order` where `productid`=?";
-		String query2 = " UPDATE INTO  `Product` `quantity` =? where `productid`=?";
-
+		String query2 = " UPDATE Product SET quantity = ? where `productid`= ? ";
+		//String query3 = "DELETE FROM Product where productid = ? ";	
+		
 		try {
 
 			PreparedStatement ps = this.connection.prepareStatement(query);
 			PreparedStatement ps2 = this.connection.prepareStatement(query2);
+			//PreparedStatement ps3 = this.connection.prepareStatement(query3);
 
+			
 			this.results = ps.executeQuery();
 			this.results = ps2.executeQuery();
-
+			//this.results = ps3.executeQuery();
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

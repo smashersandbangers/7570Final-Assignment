@@ -123,4 +123,12 @@ public class UserHelper {
 			}
 	}
 
+	public PreparedStatement getAuthQuery() {
+		return authQuery;
+	}
+
+	public void setAuthQuery(PreparedStatement authQuery) {
+		this.authQuery = authQuery;
+	}
+
 }
